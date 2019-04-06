@@ -13,7 +13,7 @@ $botman->fallback(function ($bot) {
 });
 
 $botman->hears('acerca de|acerca', function ($bot) {
-	$bot->reply('Este bot fue realizado por Daniela Alvarez Bermúdez');
+	$bot->reply('Este bot fue realizado por Daniela Alvarez Bermúdez en el curso de procesos ágiles del software');
 });
 
 $botman->hears('/ayuda', function ($bot) {
