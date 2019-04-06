@@ -8,4 +8,6 @@ $botman->hears('/start', function ($bot) {
 	$bot->reply('Hola ' . $nombres . ', bienvenido al bot SimpleQuizzes!');
 });
 
-$botman->hears('Start conversation', BotManController::class.'@startConversation');
+$botman->fallback(function ($bot) {
+	$bot->reply("No entiendo que quieres decir, vuelve a intentarlo.");
+});
