@@ -16,6 +16,20 @@ $botman->hears('acerca de|acerca', function ($bot) {
 	$bot->reply('Este bot fue realizado por Daniela Alvarez Bermúdez en el curso de procesos ágiles del software');
 });
 
+
+$botman->hears('listar quizzes|listar', function ($bot) {
+	$quizzes = \App\Quiz::orderby('titulo', 'asc')->get();
+
+	foreach($quizzes as $quiz)
+	{
+    		$bot->reply($quiz->id."- ".$quiz->titulo);
+	}
+
+	if(count($quizzes) == 0)
+    		$bot->reply("Ups, no hay cuestionarios para mostrar.");
+});
+
+
 $botman->hears('/ayuda', function ($bot) {
 	$ayuda = ['/ayuda' => 'Mostrar este mensaje de ayuda',
           	'acerca de|acerca' => 'Ver la información quien desarrollo este lindo bot',
@@ -31,3 +45,5 @@ $botman->hears('/ayuda', function ($bot) {
     		$bot->reply($key . ": " . $value);
 	}
 });
+
+
