@@ -17,17 +17,6 @@ $botman->hears('acerca de|acerca', function ($bot) {
 });
 
 
-$botman->hears('listar quizzes|listar', function ($bot) {
-	$quizzes = \App\Quiz::orderby('titulo', 'asc')->get();
-
-	foreach($quizzes as $quiz)
-	{
-    		$bot->reply($quiz->id."- ".$quiz->titulo);
-	}
-
-	if(count($quizzes) == 0)
-    		$bot->reply("Ups, no hay cuestionarios para mostrar.");
-});
 
 
 $botman->hears('/ayuda', function ($bot) {
@@ -45,5 +34,22 @@ $botman->hears('/ayuda', function ($bot) {
     		$bot->reply($key . ": " . $value);
 	}
 });
+
+$botman->hears('listar quizzes|listar', function ($bot) {
+	$quizzes = \App\Quiz::orderby('titulo', 'asc')->get();
+
+	foreach($quizzes as $quiz)
+	{
+    		$bot->reply($quiz->id."- ".$quiz->titulo);
+	}
+
+	if(count($quizzes) == 0)
+    		$bot->reply("Ups, no hay cuestionarios para mostrar.");
+});
+
+$botman->hears('iniciar quiz {id}', function ($bot, $id) {
+	$bot->startConversation(
+new \App\Conversations\RealizarQuizConversacion($id));
+})->stopsConversation();
 
 

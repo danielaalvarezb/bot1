@@ -53,5 +53,7 @@ class Quiz2Seeder extends Seeder
                                 'opcion4' => 'Es un lenguaje mixto ya que soporta objetos pero también tipos simples de datos',
                                 'respuesta' => 3]);
     }
-    
+ 
+
+
 }
