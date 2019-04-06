@@ -12,6 +12,10 @@ $botman->fallback(function ($bot) {
 	$bot->reply("No entiendo que quieres decir, vuelve a intentarlo.");
 });
 
+$botman->hears('acerca de|acerca', function ($bot) {
+	$bot->reply('Este bot fue realizado por Daniela Alvarez Bermúdez');
+});
+
 $botman->hears('/ayuda', function ($bot) {
 	$ayuda = ['/ayuda' => 'Mostrar este mensaje de ayuda',
           	'acerca de|acerca' => 'Ver la información quien desarrollo este lindo bot',
